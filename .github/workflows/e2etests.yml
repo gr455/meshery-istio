@@ -45,7 +45,7 @@ jobs:
 
   TestIstioForServicemeshInstall:
     needs: SetPatternfileForServicemeshInstall
-    uses: meshery/meshery/.github/workflows/testadapters.yaml@master
+    uses: gr455/meshery/.github/workflows/testadapters.yaml@gh-actions-timeout
     with:
       expected_pods: istiod,istio-egressgateway,istio-ingressgateway
       expected_pods_namespaces: istio-system,istio-system,istio-system
@@ -157,7 +157,7 @@ jobs:
 
   TestIstioForServicemeshAndAddon:
     needs: SetPatternfileForServicemeshAndAddon
-    uses: meshery/meshery/.github/workflows/testadapters.yaml@master
+    uses: gr455/meshery/.github/workflows/testadapters.yaml@gh-actions-timeout
     with:
       expected_pods: istiod,istio-egressgateway,istio-ingressgateway,grafana,prometheus
       expected_pods_namespaces: istio-system,istio-system,istio-system,istio-system,istio-system
@@ -271,7 +271,7 @@ jobs:
 
   TestIstioForServicemeshAndSampleApp:
     needs: SetPatternfileForServicemeshAndSampleApp
-    uses: meshery/meshery/.github/workflows/testadapters.yaml@master
+    uses: gr455/meshery/.github/workflows/testadapters.yaml@gh-actions-timeout
     with:
       expected_pods: istiod,details73de2529,productpageb6cd6107,ratings8229a44f,reviews-v13837c681,reviews-v27200aff4,reviews-v35f86bb6a
       expected_pods_namespaces: istio-system,default,default,default,default,default,default

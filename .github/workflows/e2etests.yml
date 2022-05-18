@@ -48,7 +48,7 @@ jobs:
 
   TestIstioForServicemeshInstall:
     needs: SetPatternfileForServicemeshInstall
-    uses: gr455/meshery/.github/workflows/testadapters.yaml@ci/generalize-adapters
+    uses: gr455/meshery/.github/workflows/test_adapters.yaml@ci/generalize-adapters
     with:
       expected_pods: istiod,istio-egressgateway,istio-ingressgateway
       expected_pods_namespaces: istio-system,istio-system,istio-system
@@ -160,7 +160,7 @@ jobs:
 
   TestIstioForServicemeshAndAddon:
     needs: SetPatternfileForServicemeshAndAddon
-    uses: gr455/meshery/.github/workflows/testadapters.yaml@ci/generalize-adapters
+    uses: gr455/meshery/.github/workflows/test_adapters.yaml@ci/generalize-adapters
     with:
       expected_pods: istiod,istio-egressgateway,istio-ingressgateway,grafana,prometheus
       expected_pods_namespaces: istio-system,istio-system,istio-system,istio-system,istio-system
@@ -274,7 +274,7 @@ jobs:
 
   TestIstioForServicemeshAndSampleApp:
     needs: SetPatternfileForServicemeshAndSampleApp
-    uses: gr455/meshery/.github/workflows/testadapters.yaml@ci/generalize-adapters
+    uses: gr455/meshery/.github/workflows/test_adapters.yaml@ci/generalize-adapters
     with:
       expected_pods: istiod,details,productpage,ratings,reviews-v1,reviews-v2,reviews-v3
       expected_pods_namespaces: istio-system,default,default,default,default,default,default

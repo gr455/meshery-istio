@@ -50,8 +50,8 @@ jobs:
     needs: SetPatternfileForServicemeshInstall
     uses: gr455/meshery/.github/workflows/test_adapters.yaml@ci/generalize-adapters
     with:
-      expected_resources: istiod,istio-egressgateway,istio-ingressgateway,istio-ingressgateway
-      expected_resources_types: pod,pod,pod,service
+      expected_resources: istiod,istio-egressgateway,istio-ingressgateway,istio-ingressgateway,dummy
+      expected_resources_types: pod,pod,pod,service,service
       expected_resources_namespaces: istio-system,istio-system,istio-system,istio-system
       deployment_url: https://raw.githubusercontent.com/meshery/meshery/master/install/deployment_yamls/k8s/meshery-istio-deployment.yaml
       service_url: https://raw.githubusercontent.com/meshery/meshery/master/install/deployment_yamls/k8s/meshery-istio-service.yaml

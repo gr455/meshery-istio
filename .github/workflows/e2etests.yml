@@ -52,7 +52,7 @@ jobs:
     with:
       expected_resources: istiod,istio-egressgateway,istio-ingressgateway,dummy,dummy
       expected_resources_types: pod,pod,pod,pod,service
-      expected_resources_namespaces: istio-system,istio-system,istio-system
+      expected_resources_namespaces: istio-system,istio-system,istio-system,istio-system,istio-system
       deployment_url: https://raw.githubusercontent.com/meshery/meshery/master/install/deployment_yamls/k8s/meshery-istio-deployment.yaml
       service_url: https://raw.githubusercontent.com/meshery/meshery/master/install/deployment_yamls/k8s/meshery-istio-service.yaml
       adapter_name: istio

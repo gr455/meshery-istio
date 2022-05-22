@@ -48,10 +48,11 @@ jobs:
 
   TestIstioForServicemeshInstall:
     needs: SetPatternfileForServicemeshInstall
-    uses: meshery/meshery/.github/workflows/testadapters.yaml@master
+    uses: meshery/meshery/.github/workflows/test_adapters.yaml@master
     with:
-      expected_pods: istiod,istio-egressgateway,istio-ingressgateway
-      expected_pods_namespaces: istio-system,istio-system,istio-system
+      expected_resources: istiod,istio-egressgateway,istio-ingressgateway
+      expected_resources_types: pod,pod,pod
+      expected_resources_namespaces: istio-system,istio-system,istio-system
       deployment_url: https://raw.githubusercontent.com/meshery/meshery/master/install/deployment_yamls/k8s/meshery-istio-deployment.yaml
       service_url: https://raw.githubusercontent.com/meshery/meshery/master/install/deployment_yamls/k8s/meshery-istio-service.yaml
       adapter_name: istio
@@ -160,10 +161,11 @@ jobs:
 
   TestIstioForServicemeshAndAddon:
     needs: SetPatternfileForServicemeshAndAddon
-    uses: meshery/meshery/.github/workflows/testadapters.yaml@master
+    uses: meshery/meshery/.github/workflows/test_adapters.yaml@master
     with:
-      expected_pods: istiod,istio-egressgateway,istio-ingressgateway,grafana,prometheus
-      expected_pods_namespaces: istio-system,istio-system,istio-system,istio-system,istio-system
+      expected_resources: istiod,istio-egressgateway,istio-ingressgateway,grafana,prometheus
+      expected_resources_types: pod,pod,pod,pod,pod
+      expected_resources_namespaces: istio-system,istio-system,istio-system,istio-system,istio-system
       deployment_url: https://raw.githubusercontent.com/meshery/meshery/master/install/deployment_yamls/k8s/meshery-istio-deployment.yaml
       service_url: https://raw.githubusercontent.com/meshery/meshery/master/install/deployment_yamls/k8s/meshery-istio-service.yaml
       adapter_name: istio
@@ -274,10 +276,11 @@ jobs:
 
   TestIstioForServicemeshAndSampleApp:
     needs: SetPatternfileForServicemeshAndSampleApp
-    uses: meshery/meshery/.github/workflows/testadapters.yaml@master
+    uses: meshery/meshery/.github/workflows/test_adapters.yaml@master
     with:
-      expected_pods: istiod,details,productpage,ratings,reviews-v1,reviews-v2,reviews-v3
-      expected_pods_namespaces: istio-system,default,default,default,default,default,default
+      expected_resources: istiod,details,productpage,ratings,reviews-v1,reviews-v2,reviews-v3
+      expected_resources_types: pod,pod,pod,pod,pod,pod,pod
+      expected_resources_namespaces: istio-system,default,default,default,default,default,default
       deployment_url: https://raw.githubusercontent.com/meshery/meshery/master/install/deployment_yamls/k8s/meshery-istio-deployment.yaml
       service_url: https://raw.githubusercontent.com/meshery/meshery/master/install/deployment_yamls/k8s/meshery-istio-service.yaml
       adapter_name: istio

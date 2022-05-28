@@ -57,7 +57,6 @@ jobs:
       adapter_name: istio
       patternfile_name: deploy.yaml
       provider: Local
-      k8s_version: v1.20.1
       sm_version: ${{ needs.SetPatternfileForServicemeshInstall.outputs.sm_version }}
       adapter_version:  ${{ needs.SetPatternfileForServicemeshInstall.outputs.adapter_version }}
       output_filename: data.json
@@ -156,7 +155,6 @@ jobs:
       adapter_name: istio
       patternfile_name: deploywithaddons.yaml
       provider: Local
-      k8s_version: v1.20.1
       sm_version: ${{ needs.SetPatternfileForServicemeshAndAddon.outputs.sm_version }}
       adapter_version:  ${{ needs.SetPatternfileForServicemeshAndAddon.outputs.adapter_version }}
       output_filename: data.json
@@ -271,7 +269,6 @@ jobs:
       adapter_name: istio
       patternfile_name: deploywithsampleapp.yaml
       provider: Local
-      k8s_version: v1.20.1
       sm_version: ${{ needs.SetPatternfileForServicemeshAndSampleApp.outputs.sm_version }}
       adapter_version:  ${{ needs.SetPatternfileForServicemeshAndSampleApp.outputs.adapter_version }}
       output_filename: data.json

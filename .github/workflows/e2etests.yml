@@ -8,7 +8,6 @@ on:
       - "v*"
     paths-ignore:
       - 'docs/**'
-      - '.github/**'      
   pull_request:
     branches:
       - "*"
@@ -48,7 +47,7 @@ jobs:
 
   TestIstioForServicemeshInstall:
     needs: SetPatternfileForServicemeshInstall
-    uses: gr455/meshery/.github/workflows/test_adapters.yaml@test/new-ci
+    uses: 4molybdenum2/meshery/.github/workflows/test_adapters.yaml@allow-multiple-k8s-version
     with:
       expected_resources: istiod,istio-egressgateway,istio-ingressgateway,dummy,dummy
       expected_resources_types: pod,pod,pod,pod,service
@@ -72,13 +71,7 @@ jobs:
     steps:
       - name: Skip if needed
         run: |
-            echo "this is it ${{ needs.SkipIfNeeded.outputs.skipdocupdate }} "
-            if [ "${{github.event_name }}" == "push" ];then
-              echo "version=edge" >> $GITHUB_ENV
-            fi
-            if [ "${{github.event_name }}" == "release" ];then
-              echo "version=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_ENV
-            fi
+            echo "not skipping"
       - uses: actions/checkout@master
         with:
           repository: meshery/meshery 
@@ -91,6 +84,7 @@ jobs:
         run: echo "SHORT_SHA=`echo ${GITHUB_SHA} | cut -c1-8`" >> $GITHUB_ENV
       - name: echo results
         run: |
+          cat data.json
           pretty=$(jq . data.json)
           rm data.json
 
@@ -118,15 +112,6 @@ jobs:
           ---" >  test.md
           mv test.md $filename.md
           rm data.json
-      - name: Commit
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          file_pattern: docs
-          commit_user_name: l5io
-          commit_user_email: ci@layer5.io
-          commit_author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
-          commit_options: '--signoff'
-          commit_message: '[Docs] Test status of adapter'
 
   SetPatternfileForServicemeshAndAddon:
     runs-on: ubuntu-latest
@@ -161,7 +146,7 @@ jobs:
 
   TestIstioForServicemeshAndAddon:
     needs: SetPatternfileForServicemeshAndAddon
-    uses: gr455/meshery/.github/workflows/test_adapters.yaml@test/new-ci
+    uses: 4molybdenum2/meshery/.github/workflows/test_adapters.yaml@allow-multiple-k8s-version
     with:
       expected_resources: istiod,istio-egressgateway,istio-ingressgateway,grafana,prometheus
       expected_resources_types: pod,pod,pod,pod,pod
